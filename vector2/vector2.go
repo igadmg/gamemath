@@ -6,7 +6,7 @@ import (
 	"math"
 	"math/rand"
 
-	rm "github.com/igadmg/raylib-go/raymath"
+	rm "github.com/igadmg/gamemath"
 )
 
 type Vector[T rm.SignedNumber] struct {
@@ -471,6 +471,11 @@ func (v Vector[T]) Midpoint(o Vector[T]) Vector[T] {
 // Dot return dot product between vector and other vector
 func (v Vector[T]) Dot(other Vector[T]) T {
 	return v.X*other.X + v.Y*other.Y
+}
+
+// Cross return cross product between vector and other vector
+func (v Vector[T]) Cross(other Vector[T]) T {
+	return v.X*other.Y - v.Y*other.X
 }
 
 // Perpendicular creates a vector perpendicular to the one passed in with the

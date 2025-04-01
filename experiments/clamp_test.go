@@ -5,8 +5,8 @@ import (
 	"runtime"
 	"testing"
 
-	rm "github.com/igadmg/raylib-go/raymath"
-	"github.com/igadmg/raylib-go/raymath/vector2"
+	rm "github.com/igadmg/gamemath"
+	"github.com/igadmg/gamemath/vector2"
 )
 
 var r = rand.New(rand.NewSource(99))

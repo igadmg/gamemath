@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"testing"
 
-	rm "github.com/igadmg/raylib-go/raymath"
-	"github.com/igadmg/raylib-go/raymath/vector3"
+	rm "github.com/igadmg/gamemath"
+	"github.com/igadmg/gamemath/vector3"
 	"github.com/stretchr/testify/assert"
 )
 

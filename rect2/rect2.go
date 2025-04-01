@@ -3,8 +3,8 @@ package rect2
 import (
 	"fmt"
 
-	rm "github.com/igadmg/raylib-go/raymath"
-	"github.com/igadmg/raylib-go/raymath/vector2"
+	rm "github.com/igadmg/gamemath"
+	"github.com/igadmg/gamemath/vector2"
 )
 
 type Rectangle[T rm.SignedNumber] struct {

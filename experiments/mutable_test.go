@@ -1,8 +1,8 @@
 package experiments_test
 
-import "github.com/igadmg/raylib-go/raymath"
+import "github.com/igadmg/gamemath"
 
-type MVector[T raymath.Number] struct {
+type MVector[T gamemath.Number] struct {
 	X T
 	Y T
 	Z T

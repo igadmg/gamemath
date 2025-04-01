@@ -1,10 +1,10 @@
 package test
 
 import (
-	rm "github.com/igadmg/raylib-go/raymath"
-	"github.com/igadmg/raylib-go/raymath/rect2"
-	"github.com/igadmg/raylib-go/raymath/vector2"
-	"github.com/igadmg/raylib-go/raymath/vector3"
+	rm "github.com/igadmg/gamemath"
+	"github.com/igadmg/gamemath/rect2"
+	"github.com/igadmg/gamemath/vector2"
+	"github.com/igadmg/gamemath/vector3"
 	"github.com/stretchr/testify/assert"
 )
 

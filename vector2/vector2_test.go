@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/igadmg/raylib-go/raymath/test"
-	"github.com/igadmg/raylib-go/raymath/vector2"
+	"github.com/igadmg/gamemath/test"
+	"github.com/igadmg/gamemath/vector2"
 	"github.com/stretchr/testify/assert"
 )
 

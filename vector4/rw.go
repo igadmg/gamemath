@@ -6,7 +6,7 @@ import (
 	"io"
 	"math"
 
-	rm "github.com/igadmg/raylib-go/raymath"
+	rm "github.com/igadmg/gamemath"
 )
 
 const componentCount = 4

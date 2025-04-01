@@ -3,7 +3,7 @@ package gamemath_test
 import (
 	"testing"
 
-	rm "github.com/igadmg/raylib-go/raymath"
+	rm "github.com/igadmg/gamemath"
 	"github.com/stretchr/testify/assert"
 )
 

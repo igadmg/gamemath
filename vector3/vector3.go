@@ -7,8 +7,8 @@ import (
 	"math"
 	"math/rand"
 
-	rm "github.com/igadmg/raylib-go/raymath"
-	"github.com/igadmg/raylib-go/raymath/vector2"
+	rm "github.com/igadmg/gamemath"
+	"github.com/igadmg/gamemath/vector2"
 )
 
 // Vector contains 3 components

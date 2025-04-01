@@ -3,7 +3,7 @@ package vector3
 import (
 	"math"
 
-	rm "github.com/igadmg/raylib-go/raymath"
+	rm "github.com/igadmg/gamemath"
 )
 
 type Array[T rm.SignedNumber] []Vector[T]

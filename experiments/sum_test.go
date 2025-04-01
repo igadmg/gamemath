@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/igadmg/raylib-go/raymath/vector3"
+	"github.com/igadmg/gamemath/vector3"
 )
 
 var arrLenToTest = []int{
