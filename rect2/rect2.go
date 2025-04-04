@@ -380,6 +380,13 @@ func (r Rectangle[T]) AddXYWH(x, y, w, h T) Rectangle[T] {
 	}
 }
 
+func (r Rectangle[T]) Grow(v T) Rectangle[T] {
+	return Rectangle[T]{
+		Position: r.Position.AddXY(-v, -v),
+		Size:     r.Size.AddXY(v+v, v+v),
+	}
+}
+
 func (r Rectangle[T]) GrowXYWH(left, top, right, bottom T) Rectangle[T] {
 	return Rectangle[T]{
 		Position: r.Position.AddXY(-left, -top),
