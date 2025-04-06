@@ -38,8 +38,8 @@ func NewSize[T rm.SignedNumber](size vector2.Vector[T]) Rectangle[T] {
 
 func NewXYWH[T rm.SignedNumber](x, y, w, h T) Rectangle[T] {
 	return Rectangle[T]{
-		Position: vector2.New[T](x, y),
-		Size:     vector2.New[T](w, h),
+		Position: vector2.New(x, y),
+		Size:     vector2.New(w, h),
 	}
 }
 
