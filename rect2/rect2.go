@@ -12,6 +12,10 @@ type Rectangle[T rm.SignedNumber] struct {
 	Size     vector2.Vector[T]
 }
 
+func (v Rectangle[T]) IsZero() bool {
+	return v.Position.IsZero() && v.Size.IsZero()
+}
+
 type (
 	Float64 = Rectangle[float64]
 	Float32 = Rectangle[float32]
