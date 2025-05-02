@@ -473,6 +473,14 @@ func (v Vector[T]) Dot(other Vector[T]) T {
 	return v.X*other.X + v.Y*other.Y
 }
 
+// Cross return cross product between vector and value
+func (v Vector[T]) CrossV(value T) Vector[T] {
+	return Vector[T]{
+		-value * v.Y,
+		value * v.X,
+	}
+}
+
 // Cross return cross product between vector and other vector
 func (v Vector[T]) Cross(other Vector[T]) T {
 	return v.X*other.Y - v.Y*other.X

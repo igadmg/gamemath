@@ -454,6 +454,27 @@ func (v Vector[T]) Midpoint(o Vector[T]) Vector[T] {
 	}
 }
 
+func (v Vector[T]) Barycenter(a, b, c Vector[T]) Vector[T] {
+	v0 := b.Sub(a)
+	v1 := c.Sub(a)
+	v2 := v.Sub(a)
+	d00 := v0.Dot(v0)
+	d01 := v0.Dot(v1)
+	d11 := v1.Dot(v1)
+	d20 := v2.Dot(v0)
+	d21 := v2.Dot(v1)
+
+	denom := d00*d11 - d01*d01
+
+	result := Vector[T]{}
+
+	result.Y = (d11*d20 - d01*d21) / denom
+	result.Z = (d00*d21 - d01*d20) / denom
+	result.X = 1.0 - (result.Z + result.Y)
+
+	return result
+}
+
 // Perpendicular finds a vector that meets this vector at a right angle.
 // https://stackoverflow.com/a/11132720/4974261
 func (v Vector[T]) Perpendicular() Vector[T] {
