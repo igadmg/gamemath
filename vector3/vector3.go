@@ -729,6 +729,10 @@ func (v Vector[T]) Distance(other Vector[T]) float64 {
 	return rm.Sqrt(float64(v.DistanceSquared(other)))
 }
 
+func (v Vector[T]) DistanceF(other Vector[T]) float32 {
+	return rm.Sqrt(float32(v.DistanceSquared(other)))
+}
+
 func (v Vector[T]) Angle(other Vector[T]) float64 {
 	denominator := rm.Sqrt(float64(v.LengthSquared() * other.LengthSquared()))
 	if denominator < 1e-15 {
