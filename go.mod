@@ -1,6 +1,6 @@
 module github.com/igadmg/gamemath
 
-go 1.24
+go 1.24.2
 
 require (
 	github.com/chewxy/math32 v1.11.1
