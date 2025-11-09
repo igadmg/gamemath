@@ -1,6 +1,7 @@
 package vector2
 
 import (
+	"cmp"
 	"encoding/json"
 	"fmt"
 	"math"
@@ -114,6 +115,14 @@ func One[T rm.SignedNumber]() Vector[T] {
 		X: 1,
 		Y: 1,
 	}
+}
+
+func Compare[T rm.SignedNumber](a, b Vector[T]) int {
+	yc := cmp.Compare(a.Y, b.Y)
+	if yc != 0 {
+		return yc
+	}
+	return cmp.Compare(a.X, b.X)
 }
 
 func (v Vector[T]) SignI() Int {

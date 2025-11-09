@@ -1,6 +1,7 @@
 package vector4
 
 import (
+	"cmp"
 	"encoding/json"
 	"fmt"
 	"image/color"
@@ -99,6 +100,22 @@ func Zero[T rm.SignedNumber]() Vector[T] {
 // One is (1, 1, 1)
 func One[T rm.SignedNumber]() Vector[T] {
 	return New[T](1, 1, 1, 1)
+}
+
+func Compare[T rm.SignedNumber](a, b Vector[T]) int {
+	wc := cmp.Compare(a.W, b.W)
+	if wc != 0 {
+		return wc
+	}
+	zc := cmp.Compare(a.Z, b.Z)
+	if zc != 0 {
+		return zc
+	}
+	yc := cmp.Compare(a.Y, b.Y)
+	if yc != 0 {
+		return yc
+	}
+	return cmp.Compare(a.X, b.X)
 }
 
 // Average sums all vector4's components together and divides each
