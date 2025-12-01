@@ -599,3 +599,107 @@ func TestLessEq(t *testing.T) {
 		})
 	}
 }
+
+func TestEnumRegionAround(t *testing.T) {
+	tests := map[string]struct {
+		vec  vector2.Int
+		w, h int
+		step []int
+		want []vector2.Int
+	}{
+		"around (0,0) 1x1 default step": {
+			vec:  vector2.New(0, 0),
+			w:    1,
+			h:    1,
+			step: nil,
+			want: []vector2.Int{
+				{X: -1, Y: -1}, {X: 0, Y: -1}, {X: 1, Y: -1},
+				{X: -1, Y: 0}, {X: 0, Y: 0}, {X: 1, Y: 0},
+				{X: -1, Y: 1}, {X: 0, Y: 1}, {X: 1, Y: 1},
+			},
+		},
+		"around (1,1) 1x1 default step": {
+			vec:  vector2.New(1, 1),
+			w:    1,
+			h:    1,
+			step: nil,
+			want: []vector2.Int{
+				{X: 0, Y: 0}, {X: 1, Y: 0}, {X: 2, Y: 0},
+				{X: 0, Y: 1}, {X: 1, Y: 1}, {X: 2, Y: 1},
+				{X: 0, Y: 2}, {X: 1, Y: 2}, {X: 2, Y: 2},
+			},
+		},
+		"around (0,0) 1x1 step 2": {
+			vec:  vector2.New(0, 0),
+			w:    1,
+			h:    1,
+			step: []int{2, 2},
+			want: []vector2.Int{
+				{X: -1, Y: -1}, {X: 1, Y: -1},
+				{X: -1, Y: 1}, {X: 1, Y: 1},
+			},
+		},
+	}
+
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			var got []vector2.Int
+			for v := range tc.vec.EnumRegionAround(tc.w, tc.h, tc.step...) {
+				got = append(got, v)
+			}
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
+func TestEnumRegion(t *testing.T) {
+	tests := map[string]struct {
+		vec  vector2.Int
+		w, h int
+		step []int
+		want []vector2.Int
+	}{
+		"(0,0) 2x2 default step": {
+			vec:  vector2.New(0, 0),
+			w:    2,
+			h:    2,
+			step: nil,
+			want: []vector2.Int{
+				{X: 0, Y: 0}, {X: 1, Y: 0}, {X: 2, Y: 0},
+				{X: 0, Y: 1}, {X: 1, Y: 1}, {X: 2, Y: 1},
+				{X: 0, Y: 2}, {X: 1, Y: 2}, {X: 2, Y: 2},
+			},
+		},
+		"(1,1) 2x2 default step": {
+			vec:  vector2.New(1, 1),
+			w:    2,
+			h:    2,
+			step: nil,
+			want: []vector2.Int{
+				{X: 1, Y: 1}, {X: 2, Y: 1}, {X: 3, Y: 1},
+				{X: 1, Y: 2}, {X: 2, Y: 2}, {X: 3, Y: 2},
+				{X: 1, Y: 3}, {X: 2, Y: 3}, {X: 3, Y: 3},
+			},
+		},
+		"(0,0) 2x2 step 2": {
+			vec:  vector2.New(0, 0),
+			w:    2,
+			h:    2,
+			step: []int{2, 2},
+			want: []vector2.Int{
+				{X: 0, Y: 0}, {X: 2, Y: 0},
+				{X: 0, Y: 2}, {X: 2, Y: 2},
+			},
+		},
+	}
+
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			var got []vector2.Int
+			for v := range tc.vec.EnumRegion(tc.w, tc.h, tc.step...) {
+				got = append(got, v)
+			}
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
