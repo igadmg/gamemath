@@ -12,45 +12,45 @@ import (
 const componentCount = 2
 
 func (v Vector[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
-	switch vv := any(v).(type) {
+	switch v := any(v).(type) {
 	case Float64:
 		bytes := make([]byte, 8*componentCount)
-		endian.PutUint64(bytes, math.Float64bits(vv.X))
-		endian.PutUint64(bytes[8:], math.Float64bits(vv.Y))
+		endian.PutUint64(bytes, math.Float64bits(v.X))
+		endian.PutUint64(bytes[8:], math.Float64bits(v.Y))
 		_, err = out.Write(bytes)
 		return
 	case Float32:
 		bytes := make([]byte, 4*componentCount)
-		endian.PutUint32(bytes, math.Float32bits(vv.X))
-		endian.PutUint32(bytes[4:], math.Float32bits(vv.Y))
+		endian.PutUint32(bytes, math.Float32bits(v.X))
+		endian.PutUint32(bytes[4:], math.Float32bits(v.Y))
 		_, err = out.Write(bytes)
 		return
 
 	case Int8:
 		_, err = out.Write([]byte{
-			byte(vv.X),
-			byte(vv.Y),
+			byte(v.X),
+			byte(v.Y),
 		})
 		return
 
 	case Int16:
 		bytes := make([]byte, 2*componentCount)
-		endian.PutUint16(bytes, uint16(vv.X))
-		endian.PutUint16(bytes[2:], uint16(vv.Y))
+		endian.PutUint16(bytes, uint16(v.X))
+		endian.PutUint16(bytes[2:], uint16(v.Y))
 		_, err = out.Write(bytes)
 		return
 
 	case Int32:
 		bytes := make([]byte, 4*componentCount)
-		endian.PutUint32(bytes, uint32(vv.X))
-		endian.PutUint32(bytes[4:], uint32(vv.Y))
+		endian.PutUint32(bytes, uint32(v.X))
+		endian.PutUint32(bytes[4:], uint32(v.Y))
 		_, err = out.Write(bytes)
 		return
 
 	case Int64:
 		bytes := make([]byte, 8*componentCount)
-		endian.PutUint64(bytes, uint64(vv.X))
-		endian.PutUint64(bytes[8:], uint64(vv.Y))
+		endian.PutUint64(bytes, uint64(v.X))
+		endian.PutUint64(bytes[8:], uint64(v.Y))
 		_, err = out.Write(bytes)
 		return
 	}
@@ -61,28 +61,23 @@ func (v Vector[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
 func Read[T rm.SignedNumber](in io.Reader, endian binary.ByteOrder) (v Vector[T], err error) {
 	switch any(v).(type) {
 	case Float64:
-		vv, err := ReadFloat64(in, endian)
-		return any(vv).(Vector[T]), err
-
+		v, err := ReadFloat64(in, endian)
+		return any(v).(Vector[T]), err
 	case Float32:
-		vv, err := ReadFloat32(in, endian)
-		return any(vv).(Vector[T]), err
-
+		v, err := ReadFloat32(in, endian)
+		return any(v).(Vector[T]), err
 	case Int8:
-		vv, err := ReadInt8(in)
-		return any(vv).(Vector[T]), err
-
+		v, err := ReadInt8(in)
+		return any(v).(Vector[T]), err
 	case Int16:
-		vv, err := ReadInt16(in, endian)
-		return any(vv).(Vector[T]), err
-
+		v, err := ReadInt16(in, endian)
+		return any(v).(Vector[T]), err
 	case Int32:
-		vv, err := ReadInt32(in, endian)
-		return any(vv).(Vector[T]), err
-
+		v, err := ReadInt32(in, endian)
+		return any(v).(Vector[T]), err
 	case Int64:
-		vv, err := ReadInt64(in, endian)
-		return any(vv).(Vector[T]), err
+		v, err := ReadInt64(in, endian)
+		return any(v).(Vector[T]), err
 	}
 
 	panic(fmt.Errorf("read unimplemented type: %#v", v))
