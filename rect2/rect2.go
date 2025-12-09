@@ -104,6 +104,13 @@ func (r Rectangle[T]) A() vector2.Vector[T] {
 	return r.Position
 }
 
+func (r Rectangle[T]) AB() vector2.Vector[T] {
+	return vector2.Vector[T]{
+		X: r.Position.X,
+		Y: r.Position.Y + r.Size.Y,
+	}
+}
+
 func (r Rectangle[T]) SetA(a vector2.Vector[T]) Rectangle[T] {
 	dxy := a.Sub(r.Position)
 	return Rectangle[T]{
@@ -114,6 +121,13 @@ func (r Rectangle[T]) SetA(a vector2.Vector[T]) Rectangle[T] {
 
 func (r Rectangle[T]) B() vector2.Vector[T] {
 	return r.Position.Add(r.Size)
+}
+
+func (r Rectangle[T]) BA() vector2.Vector[T] {
+	return vector2.Vector[T]{
+		X: r.Position.X + r.Size.X,
+		Y: r.Position.Y,
+	}
 }
 
 func (r Rectangle[T]) SetB(b vector2.Vector[T]) Rectangle[T] {
