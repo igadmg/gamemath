@@ -5,6 +5,15 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+type Axis int
+
+const (
+	AxisX Axis = iota
+	AxisY
+	AxisZ
+	AxisW
+)
+
 type SignedNumber interface {
 	constraints.Signed | constraints.Float
 }

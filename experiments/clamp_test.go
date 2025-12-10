@@ -5,17 +5,17 @@ import (
 	"runtime"
 	"testing"
 
-	rm "github.com/igadmg/gamemath"
+	gm "github.com/igadmg/gamemath"
 	"github.com/igadmg/gamemath/vector2"
 )
 
 var r = rand.New(rand.NewSource(99))
 
-func ClampGenericMinMax[T rm.Number](f, vmin, vmax T) T {
+func ClampGenericMinMax[T gm.Number](f, vmin, vmax T) T {
 	return max(min(f, vmax), vmin)
 }
 
-func ClampGenericCompare[T rm.Number](f, vmin, vmax T) T {
+func ClampGenericCompare[T gm.Number](f, vmin, vmax T) T {
 	if f <= vmin {
 		return vmin
 	}
@@ -48,7 +48,7 @@ func BenchmarkClampMathEx(b *testing.B) {
 	b.ResetTimer()
 
 	for n := 0; n < b.N; n++ {
-		res += rm.Clamp(i, imin, imax)
+		res += gm.Clamp(i, imin, imax)
 	}
 	runtime.KeepAlive(res)
 }

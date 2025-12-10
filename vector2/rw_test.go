@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"testing"
 
-	rm "github.com/igadmg/gamemath"
+	gm "github.com/igadmg/gamemath"
 	"github.com/igadmg/gamemath/vector2"
 	"github.com/stretchr/testify/assert"
 )
@@ -14,7 +14,7 @@ type testCaseI interface {
 	test(t *testing.T)
 }
 
-type readWriteTestCase[T rm.SignedNumber] struct {
+type readWriteTestCase[T gm.SignedNumber] struct {
 	val vector2.Vector[T]
 }
 

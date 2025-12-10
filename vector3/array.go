@@ -3,10 +3,10 @@ package vector3
 import (
 	"math"
 
-	rm "github.com/igadmg/gamemath"
+	gm "github.com/igadmg/gamemath"
 )
 
-type Array[T rm.SignedNumber] []Vector[T]
+type Array[T gm.SignedNumber] []Vector[T]
 
 type (
 	Float64Array = Array[float64]

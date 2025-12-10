@@ -7,10 +7,10 @@ import (
 	"math"
 	"math/rand"
 
-	rm "github.com/igadmg/gamemath"
+	gm "github.com/igadmg/gamemath"
 )
 
-type Vector[T rm.SignedNumber] struct {
+type Vector[T gm.SignedNumber] struct {
 	X T
 	Y T
 }
@@ -25,99 +25,99 @@ type (
 	Int8    = Vector[int8]
 )
 
-func New[T rm.SignedNumber](x T, y T) Vector[T] {
+func New[T gm.SignedNumber](x T, y T) Vector[T] {
 	return Vector[T]{
 		X: x,
 		Y: y,
 	}
 }
 
-func NewT[T rm.SignedNumber, XT, YT rm.Number](x XT, y YT) Vector[T] {
+func NewT[T gm.SignedNumber, XT, YT gm.Number](x XT, y YT) Vector[T] {
 	return Vector[T]{
 		X: T(x),
 		Y: T(y),
 	}
 }
 
-func NewFloat64[XT, YT rm.Number](x XT, y YT) Float64 {
+func NewFloat64[XT, YT gm.Number](x XT, y YT) Float64 {
 	return NewT[float64](x, y)
 }
 
-func NewFloat32[XT, YT rm.Number](x XT, y YT) Float32 {
+func NewFloat32[XT, YT gm.Number](x XT, y YT) Float32 {
 	return NewT[float32](x, y)
 }
 
-func NewInt[XT, YT rm.Number](x XT, y YT) Int {
+func NewInt[XT, YT gm.Number](x XT, y YT) Int {
 	return NewT[int](x, y)
 }
 
-func NewInt64[XT, YT rm.Number](x XT, y YT) Int64 {
+func NewInt64[XT, YT gm.Number](x XT, y YT) Int64 {
 	return NewT[int64](x, y)
 }
 
-func NewInt32[XT, YT rm.Number](x XT, y YT) Int32 {
+func NewInt32[XT, YT gm.Number](x XT, y YT) Int32 {
 	return NewT[int32](x, y)
 }
 
-func NewInt16[XT, YT rm.Number](x XT, y YT) Int16 {
+func NewInt16[XT, YT gm.Number](x XT, y YT) Int16 {
 	return NewT[int16](x, y)
 }
 
-func NewInt8[XT, YT rm.Number](x XT, y YT) Int8 {
+func NewInt8[XT, YT gm.Number](x XT, y YT) Int8 {
 	return NewT[int8](x, y)
 }
 
 // Fill creates a vector where each component is equal to v
-func Fill[T rm.SignedNumber](v T) Vector[T] {
+func Fill[T gm.SignedNumber](v T) Vector[T] {
 	return Vector[T]{
 		X: v,
 		Y: v,
 	}
 }
 
-func Zero[T rm.SignedNumber]() Vector[T] {
+func Zero[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: 0,
 		Y: 0,
 	}
 }
 
-func Up[T rm.SignedNumber]() Vector[T] {
+func Up[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: 0,
 		Y: 1,
 	}
 }
 
-func Down[T rm.SignedNumber]() Vector[T] {
+func Down[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: 0,
 		Y: -1,
 	}
 }
 
-func Left[T rm.SignedNumber]() Vector[T] {
+func Left[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: -1,
 		Y: 0,
 	}
 }
 
-func Right[T rm.SignedNumber]() Vector[T] {
+func Right[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: 1,
 		Y: 0,
 	}
 }
 
-func One[T rm.SignedNumber]() Vector[T] {
+func One[T gm.SignedNumber]() Vector[T] {
 	return Vector[T]{
 		X: 1,
 		Y: 1,
 	}
 }
 
-func Compare[T rm.SignedNumber](a, b Vector[T]) int {
+func Compare[T gm.SignedNumber](a, b Vector[T]) int {
 	yc := cmp.Compare(a.Y, b.Y)
 	if yc != 0 {
 		return yc
@@ -177,60 +177,60 @@ func (v Vector[T]) InvF() Float32 {
 }
 
 // Lerp linearly interpolates between a and b by t
-func Lerp[T rm.SignedNumber](t float32, a, b Vector[T]) Vector[T] {
+func Lerp[T gm.SignedNumber](t float32, a, b Vector[T]) Vector[T] {
 	return Vector[T]{
-		X: rm.Lerp(t, a.X, b.X),
-		Y: rm.Lerp(t, a.Y, b.Y),
+		X: gm.Lerp(t, a.X, b.X),
+		Y: gm.Lerp(t, a.Y, b.Y),
 	}
 }
 
-func Min[T rm.SignedNumber](a, b Vector[T]) Vector[T] {
+func Min[T gm.SignedNumber](a, b Vector[T]) Vector[T] {
 	return New(
 		min(a.X, b.X),
 		min(a.Y, b.Y),
 	)
 }
 
-func Max[T rm.SignedNumber](a, b Vector[T]) Vector[T] {
+func Max[T gm.SignedNumber](a, b Vector[T]) Vector[T] {
 	return New(
 		max(a.X, b.X),
 		max(a.Y, b.Y),
 	)
 }
 
-func MaxX[T rm.SignedNumber](a, b Vector[T]) T {
+func MaxX[T gm.SignedNumber](a, b Vector[T]) T {
 	return max(a.X, b.X)
 }
 
-func MaxY[T rm.SignedNumber](a, b Vector[T]) T {
+func MaxY[T gm.SignedNumber](a, b Vector[T]) T {
 	return max(a.Y, b.Y)
 }
 
-func MinX[T rm.SignedNumber](a, b Vector[T]) T {
+func MinX[T gm.SignedNumber](a, b Vector[T]) T {
 	return min(a.X, b.X)
 }
 
-func MinY[T rm.SignedNumber](a, b Vector[T]) T {
+func MinY[T gm.SignedNumber](a, b Vector[T]) T {
 	return min(a.Y, b.Y)
 }
 
-func Less[T rm.SignedNumber](a, b Vector[T]) bool {
+func Less[T gm.SignedNumber](a, b Vector[T]) bool {
 	return a.X < b.X && a.Y < b.Y
 }
 
-func LessEq[T rm.SignedNumber](a, b Vector[T]) bool {
+func LessEq[T gm.SignedNumber](a, b Vector[T]) bool {
 	return a.X <= b.X && a.Y <= b.Y
 }
 
-func Greater[T rm.SignedNumber](a, b Vector[T]) bool {
+func Greater[T gm.SignedNumber](a, b Vector[T]) bool {
 	return a.X > b.X && a.Y > b.Y
 }
 
-func GreaterEq[T rm.SignedNumber](a, b Vector[T]) bool {
+func GreaterEq[T gm.SignedNumber](a, b Vector[T]) bool {
 	return a.X >= b.X && a.Y >= b.Y
 }
 
-func Midpoint[T rm.SignedNumber](a, b Vector[T]) Vector[T] {
+func Midpoint[T gm.SignedNumber](a, b Vector[T]) Vector[T] {
 	// center = (b - a)0.5 + a
 	// center = b0.5 - a0.5 + a
 	// center = b0.5 + a0.5
@@ -257,7 +257,7 @@ func (v Vector[T]) String() string {
 // only those values will be used to build the vector, and the remaining vector
 // components will remain the default value of the vector's data type (some
 // version of 0).
-func FromArray[T rm.SignedNumber](data []T) Vector[T] {
+func FromArray[T gm.SignedNumber](data []T) Vector[T] {
 	v := Vector[T]{}
 
 	if len(data) > 0 {
@@ -319,40 +319,40 @@ func (v Vector[T]) Format(format string) string {
 // Sqrt applies the Sqrt to each component of the vector
 func (v Vector[T]) Sqrt() Vector[T] {
 	return New(
-		rm.Sqrt(v.X),
-		rm.Sqrt(v.Y),
+		gm.Sqrt(v.X),
+		gm.Sqrt(v.Y),
 	)
 }
 
 func (v Vector[T]) Clamp(vmin, vmax T) Vector[T] {
 	return Vector[T]{
-		X: rm.Clamp(v.X, vmin, vmax),
-		Y: rm.Clamp(v.Y, vmin, vmax),
+		X: gm.Clamp(v.X, vmin, vmax),
+		Y: gm.Clamp(v.Y, vmin, vmax),
 	}
 }
 
 func (v Vector[T]) ClampV(vmin, vmax Vector[T]) Vector[T] {
 	return Vector[T]{
-		X: rm.Clamp(v.X, vmin.X, vmax.X),
-		Y: rm.Clamp(v.Y, vmin.Y, vmax.Y),
+		X: gm.Clamp(v.X, vmin.X, vmax.X),
+		Y: gm.Clamp(v.Y, vmin.Y, vmax.Y),
 	}
 }
 
 func (v Vector[T]) Clamp0V(vmax Vector[T]) Vector[T] {
 	return Vector[T]{
-		X: rm.Clamp(v.X, 0, vmax.X),
-		Y: rm.Clamp(v.Y, 0, vmax.Y),
+		X: gm.Clamp(v.X, 0, vmax.X),
+		Y: gm.Clamp(v.Y, 0, vmax.Y),
 	}
 }
 
 func (v Vector[T]) ToNpot() Vector[T] {
 	return Vector[T]{
-		X: rm.Npot(v.X),
-		Y: rm.Npot(v.Y),
+		X: gm.Npot(v.X),
+		Y: gm.Npot(v.Y),
 	}
 }
 
-func To[T, OT rm.SignedNumber](v Vector[OT]) Vector[T] {
+func To[T, OT gm.SignedNumber](v Vector[OT]) Vector[T] {
 	return Vector[T]{
 		X: T(v.X),
 		Y: T(v.Y),
@@ -419,25 +419,25 @@ func (v Vector[T]) AddY(dY T) Vector[T] {
 	}
 }
 
-func (v Vector[T]) Axis(i int) T {
+func (v Vector[T]) Axis(i gm.Axis) T {
 	switch i {
-	case 0:
+	case gm.AxisX:
 		return v.X
-	case 1:
+	case gm.AxisY:
 		return v.Y
 	}
 
 	return 0
 }
 
-func (v Vector[T]) SetAxis(i int, a T) Vector[T] {
+func (v Vector[T]) SetAxis(i gm.Axis, a T) Vector[T] {
 	switch i {
-	case 0:
+	case gm.AxisX:
 		return Vector[T]{
 			X: a,
 			Y: v.Y,
 		}
-	case 1:
+	case gm.AxisY:
 		return Vector[T]{
 			X: v.X,
 			Y: a,
@@ -456,20 +456,20 @@ func (v Vector[T]) YX() Vector[T] {
 
 // Angle return angle in radians between vector and other vector [float64]
 func (v Vector[T]) Angle(other Vector[T]) float64 {
-	denominator := rm.Sqrt(float64(v.LengthSquared() * other.LengthSquared()))
+	denominator := gm.Sqrt(float64(v.LengthSquared() * other.LengthSquared()))
 	if denominator < 1e-15 {
 		return 0.
 	}
-	return rm.Acos(rm.Clamp(float64(v.Dot(other))/denominator, -1., 1.))
+	return gm.Acos(gm.Clamp(float64(v.Dot(other))/denominator, -1., 1.))
 }
 
 // AngleF return angle in radians between vector and other vector [float32]
 func (v Vector[T]) AngleF(other Vector[T]) float32 {
-	denominator := rm.Sqrt(float32(v.LengthSquared() * other.LengthSquared()))
+	denominator := gm.Sqrt(float32(v.LengthSquared() * other.LengthSquared()))
 	if denominator < 1e-15 {
 		return 0.
 	}
-	return rm.Acos(rm.Clamp(float32(v.Dot(other))/denominator, -1., 1.))
+	return gm.Acos(gm.Clamp(float32(v.Dot(other))/denominator, -1., 1.))
 }
 
 // Midpoint returns the midpoint between this vector and the vector passed in.
@@ -556,11 +556,11 @@ func (v Vector[T]) LengthSquared() T {
 }
 
 func (v Vector[T]) Length() float64 {
-	return rm.Sqrt((float64)(v.LengthSquared()))
+	return gm.Sqrt((float64)(v.LengthSquared()))
 }
 
 func (v Vector[T]) LengthF() float32 {
-	return rm.Sqrt((float32)(v.LengthSquared()))
+	return gm.Sqrt((float32)(v.LengthSquared()))
 }
 
 func (v Vector[T]) Normalized() Vector[T] {
@@ -569,15 +569,15 @@ func (v Vector[T]) Normalized() Vector[T] {
 
 func (v Vector[T]) NormalizeF(a Vector[T]) Float32 {
 	return Float32{
-		X: rm.NormalizeF(a.X, 0, v.X),
-		Y: rm.NormalizeF(a.Y, 0, v.Y),
+		X: gm.NormalizeF(a.X, 0, v.X),
+		Y: gm.NormalizeF(a.Y, 0, v.Y),
 	}
 }
 
 func (v Vector[T]) Normalize(a Vector[T]) Float64 {
 	return Float64{
-		X: float64(rm.Normalize(a.X, 0, v.X)),
-		Y: float64(rm.Normalize(a.Y, 0, v.Y)),
+		X: float64(gm.Normalize(a.X, 0, v.X)),
+		Y: float64(gm.Normalize(a.Y, 0, v.Y)),
 	}
 }
 
@@ -685,15 +685,15 @@ func (v Vector[T]) DistanceSquared(other Vector[T]) T {
 
 // Distance is the euclidean distance between two points
 func (v Vector[T]) Distance(other Vector[T]) float64 {
-	return rm.Sqrt((float64)(v.DistanceSquared(other)))
+	return gm.Sqrt((float64)(v.DistanceSquared(other)))
 }
 
 // Round takes each component of the vector and rounds it to the nearest whole
 // number
 func (v Vector[T]) Round() Vector[T] {
 	return Vector[T]{
-		X: rm.Round(v.X),
-		Y: rm.Round(v.Y),
+		X: gm.Round(v.X),
+		Y: gm.Round(v.Y),
 	}
 }
 
@@ -701,16 +701,16 @@ func (v Vector[T]) Round() Vector[T] {
 // whole number, and then casts it to a int
 func (v Vector[T]) RoundToInt() Vector[int] {
 	return New(
-		int(rm.Round(v.X)),
-		int(rm.Round(v.Y)),
+		int(gm.Round(v.X)),
+		int(gm.Round(v.Y)),
 	)
 }
 
 // Ceil applies the ceil math operation to each component of the vector
 func (v Vector[T]) Ceil() Vector[T] {
 	return Vector[T]{
-		X: rm.Ceil(v.X),
-		Y: rm.Ceil(v.Y),
+		X: gm.Ceil(v.X),
+		Y: gm.Ceil(v.Y),
 	}
 }
 
@@ -718,15 +718,15 @@ func (v Vector[T]) Ceil() Vector[T] {
 // and then casts it to a int
 func (v Vector[T]) CeilToInt() Vector[int] {
 	return New(
-		int(rm.Ceil(v.X)),
-		int(rm.Ceil(v.Y)),
+		int(gm.Ceil(v.X)),
+		int(gm.Ceil(v.Y)),
 	)
 }
 
 func (v Vector[T]) Floor() Vector[T] {
 	return Vector[T]{
-		X: rm.Floor(v.X),
-		Y: rm.Floor(v.Y),
+		X: gm.Floor(v.X),
+		Y: gm.Floor(v.Y),
 	}
 }
 
@@ -734,21 +734,21 @@ func (v Vector[T]) Floor() Vector[T] {
 // and then casts it to a int
 func (v Vector[T]) FloorToInt() Vector[int] {
 	return New(
-		int(rm.Floor(v.X)),
-		int(rm.Floor(v.Y)),
+		int(gm.Floor(v.X)),
+		int(gm.Floor(v.Y)),
 	)
 }
 
 // Abs applies the Abs math operation to each component of the vector
 func (v Vector[T]) Abs() Vector[T] {
 	return Vector[T]{
-		X: rm.Abs(v.X),
-		Y: rm.Abs(v.Y),
+		X: gm.Abs(v.X),
+		Y: gm.Abs(v.Y),
 	}
 }
 
 func (v Vector[T]) NearZero() bool {
-	return rm.NearZero(v.X) && rm.NearZero(v.Y)
+	return gm.NearZero(v.X) && gm.NearZero(v.Y)
 }
 
 func (v Vector[T]) ContainsNaN() bool {
@@ -794,48 +794,48 @@ func (v Vector[T]) Pivot(anchor Vector[T], wh Vector[T]) Vector[T] {
 // Log returns the natural logarithm for each component
 func (v Vector[T]) Log() Vector[T] {
 	return Vector[T]{
-		X: rm.Log(v.X),
-		Y: rm.Log(v.Y),
+		X: gm.Log(v.X),
+		Y: gm.Log(v.Y),
 	}
 }
 
 // Log10 returns the decimal logarithm for each component.
 func (v Vector[T]) Log10() Vector[T] {
 	return Vector[T]{
-		X: rm.Log10(v.X),
-		Y: rm.Log10(v.Y),
+		X: gm.Log10(v.X),
+		Y: gm.Log10(v.Y),
 	}
 }
 
 // Log2 returns the binary logarithm for each component
 func (v Vector[T]) Log2() Vector[T] {
 	return Vector[T]{
-		X: rm.Log2(v.X),
-		Y: rm.Log2(v.Y),
+		X: gm.Log2(v.X),
+		Y: gm.Log2(v.Y),
 	}
 }
 
 // Exp2 returns 2**x, the base-2 exponential for each component
 func (v Vector[T]) Exp2() Vector[T] {
 	return Vector[T]{
-		X: rm.Exp2(v.X),
-		Y: rm.Exp2(v.Y),
+		X: gm.Exp2(v.X),
+		Y: gm.Exp2(v.Y),
 	}
 }
 
 // Exp returns e**x, the base-e exponential for each component
 func (v Vector[T]) Exp() Vector[T] {
 	return Vector[T]{
-		X: rm.Exp(v.X),
-		Y: rm.Exp(v.Y),
+		X: gm.Exp(v.X),
+		Y: gm.Exp(v.Y),
 	}
 }
 
 // Expm1 returns e**x - 1, the base-e exponential for each component minus 1. It is more accurate than Exp(x) - 1 when the component is near zero
 func (v Vector[T]) Expm1() Vector[T] {
 	return Vector[T]{
-		X: rm.Expm1(v.X),
-		Y: rm.Expm1(v.Y),
+		X: gm.Expm1(v.X),
+		Y: gm.Expm1(v.Y),
 	}
 }
 
