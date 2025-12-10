@@ -79,6 +79,7 @@ func BenchmarkAddMutableVectorInPlaceDirect(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		r.X = ((r.X+va.X)*va.X+1/va.X)/va.X/vb.X + 1/vb.X
 		r.Y = ((r.Y+va.Y)*va.Y+1/va.Y)/va.Y/vb.Y + 1/vb.Y
+		r.Z = ((r.Z+va.Z)*va.Z+1/va.Z)/va.Z/vb.Z + 1/vb.Z
 	}
 	addResultMFloat64 = r
 	runtime.KeepAlive(r)

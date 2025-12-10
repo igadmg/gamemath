@@ -14,7 +14,7 @@ func BenchmarkAccessVector(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		a := vector3.New(n, n, n)
-		r = a.X
+		r += a.X + a.Y + a.Z
 	}
 
 	accessResult = r
@@ -26,7 +26,7 @@ func BenchmarkAccessMutableVector(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		a := MVector[int]{n, n, n}
-		r = a.X
+		r += a.X + a.Y + a.Z
 	}
 
 	accessResult = r
