@@ -5,7 +5,7 @@ go 1.25
 require (
 	github.com/chewxy/math32 v1.11.1
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/exp v0.0.0-20251125195548-87e1e737ad39
+	golang.org/x/exp v0.0.0-20251219203646-944ab1f22d93
 )
 
 require (
