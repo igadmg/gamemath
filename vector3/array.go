@@ -3,10 +3,10 @@ package vector3
 import (
 	"math"
 
-	gm "github.com/igadmg/gamemath"
+	"github.com/igadmg/goex/mathex"
 )
 
-type Array[T gm.SignedNumber] []Vector[T]
+type Array[T mathex.SignedNumber] []Vector[T]
 
 type (
 	Float64Array = Array[float64]

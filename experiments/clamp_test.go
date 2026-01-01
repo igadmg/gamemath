@@ -5,17 +5,17 @@ import (
 	"runtime"
 	"testing"
 
-	gm "github.com/igadmg/gamemath"
 	"github.com/igadmg/gamemath/vector2"
+	"github.com/igadmg/goex/mathex"
 )
 
 var r = rand.New(rand.NewSource(99))
 
-func ClampGenericMinMax[T gm.Number](f, vmin, vmax T) T {
+func ClampGenericMinMax[T mathex.Number](f, vmin, vmax T) T {
 	return max(min(f, vmax), vmin)
 }
 
-func ClampGenericCompare[T gm.Number](f, vmin, vmax T) T {
+func ClampGenericCompare[T mathex.Number](f, vmin, vmax T) T {
 	if f <= vmin {
 		return vmin
 	}
@@ -48,7 +48,7 @@ func BenchmarkClampMathEx(b *testing.B) {
 	b.ResetTimer()
 
 	for n := 0; n < b.N; n++ {
-		res += gm.Clamp(i, imin, imax)
+		res += mathex.Clamp(i, imin, imax)
 	}
 	runtime.KeepAlive(res)
 }

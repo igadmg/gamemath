@@ -1,8 +1,8 @@
 package experiments_test
 
-import "github.com/igadmg/gamemath"
+import "github.com/igadmg/goex/mathex"
 
-type MVector[T gamemath.Number] struct {
+type MVector[T mathex.Number] struct {
 	X T
 	Y T
 	Z T

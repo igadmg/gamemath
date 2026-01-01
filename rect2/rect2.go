@@ -3,11 +3,11 @@ package rect2
 import (
 	"fmt"
 
-	gm "github.com/igadmg/gamemath"
 	"github.com/igadmg/gamemath/vector2"
+	"github.com/igadmg/goex/mathex"
 )
 
-type Rectangle[T gm.SignedNumber] struct {
+type Rectangle[T mathex.SignedNumber] struct {
 	Position vector2.Vector[T]
 	Size     vector2.Vector[T]
 }
@@ -26,70 +26,70 @@ type (
 	Int8    = Rectangle[int8]
 )
 
-func New[T gm.SignedNumber](position vector2.Vector[T], size vector2.Vector[T]) Rectangle[T] {
+func New[T mathex.SignedNumber](position vector2.Vector[T], size vector2.Vector[T]) Rectangle[T] {
 	return Rectangle[T]{
 		Position: position,
 		Size:     size,
 	}
 }
 
-func NewSize[T gm.SignedNumber](size vector2.Vector[T]) Rectangle[T] {
+func NewSize[T mathex.SignedNumber](size vector2.Vector[T]) Rectangle[T] {
 	return Rectangle[T]{
 		Position: vector2.Zero[T](),
 		Size:     size,
 	}
 }
 
-func NewXYWH[T gm.SignedNumber](x, y, w, h T) Rectangle[T] {
+func NewXYWH[T mathex.SignedNumber](x, y, w, h T) Rectangle[T] {
 	return Rectangle[T]{
 		Position: vector2.New(x, y),
 		Size:     vector2.New(w, h),
 	}
 }
 
-func NewT[T gm.SignedNumber, PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Rectangle[T] {
+func NewT[T mathex.SignedNumber, PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Rectangle[T] {
 	return Rectangle[T]{
 		Position: vector2.To[T](position),
 		Size:     vector2.To[T](size),
 	}
 }
 
-func NewFloat64[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Float64 {
+func NewFloat64[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Float64 {
 	return NewT[float64](position, size)
 }
 
-func NewFloat32[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Float32 {
+func NewFloat32[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Float32 {
 	return NewT[float32](position, size)
 }
 
-func NewInt[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int {
+func NewInt[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int {
 	return NewT[int](position, size)
 }
 
-func NewInt64[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int64 {
+func NewInt64[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int64 {
 	return NewT[int64](position, size)
 }
 
-func NewInt32[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int32 {
+func NewInt32[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int32 {
 	return NewT[int32](position, size)
 }
 
-func NewInt16[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int16 {
+func NewInt16[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int16 {
 	return NewT[int16](position, size)
 }
 
-func NewInt8[PT, ST gm.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int8 {
+func NewInt8[PT, ST mathex.SignedNumber](position vector2.Vector[PT], size vector2.Vector[ST]) Int8 {
 	return NewT[int8](position, size)
 }
 
-func Zero[T gm.SignedNumber]() Rectangle[T] {
+func Zero[T mathex.SignedNumber]() Rectangle[T] {
 	return Rectangle[T]{
 		Position: vector2.Zero[T](),
 		Size:     vector2.Zero[T](),
 	}
 }
 
-func One[T gm.SignedNumber]() Rectangle[T] {
+func One[T mathex.SignedNumber]() Rectangle[T] {
 	return Rectangle[T]{
 		Position: vector2.Zero[T](),
 		Size:     vector2.One[T](),

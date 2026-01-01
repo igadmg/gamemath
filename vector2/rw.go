@@ -6,7 +6,7 @@ import (
 	"io"
 	"math"
 
-	gm "github.com/igadmg/gamemath"
+	"github.com/igadmg/goex/mathex"
 )
 
 const componentCount = 2
@@ -58,7 +58,7 @@ func (v Vector[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
 	panic(fmt.Errorf("write unimplemented type: %#v", v))
 }
 
-func Read[T gm.SignedNumber](in io.Reader, endian binary.ByteOrder) (v Vector[T], err error) {
+func Read[T mathex.SignedNumber](in io.Reader, endian binary.ByteOrder) (v Vector[T], err error) {
 	switch any(v).(type) {
 	case Float64:
 		v, err := ReadFloat64(in, endian)
