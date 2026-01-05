@@ -707,6 +707,15 @@ func (v Vector[T]) RoundToInt() Vector[int] {
 	)
 }
 
+// RoundToInt takes each component of the vector and rounds it to the nearest
+// whole number, and then casts it to a int
+func (v Vector[T]) RoundToVector(scale Vector[T]) Vector[T] {
+	return New(
+		mathex.Round(v.X*scale.X)/scale.X,
+		mathex.Round(v.Y*scale.Y)/scale.Y,
+	)
+}
+
 // Ceil applies the ceil math operation to each component of the vector
 func (v Vector[T]) Ceil() Vector[T] {
 	return Vector[T]{
