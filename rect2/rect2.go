@@ -542,6 +542,10 @@ func (r Rectangle[T]) Contains(v vector2.Vector[T]) bool {
 	return vector2.GreaterEq(v, r.A()) && vector2.LessEq(v, r.B())
 }
 
+func (r Rectangle[T]) OverlappedBy(or Rectangle[T]) bool {
+	return vector2.LessEq(or.A(), r.B()) && vector2.GreaterEq(or.B(), r.A())
+}
+
 func (r Rectangle[T]) Pivot(anchor vector2.Vector[T], xy vector2.Vector[T]) Rectangle[T] {
 	return Rectangle[T]{
 		Position: xy.Sub(anchor.MultByVector(r.Size)),
