@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/igadmg/gamemath/vector3"
+	"github.com/Mishka-Squat/gamemath/vector3"
 )
 
 var accessResult int

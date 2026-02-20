@@ -3,8 +3,8 @@ package rect2
 import (
 	"fmt"
 
-	"github.com/igadmg/gamemath/vector2"
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/gamemath/vector2"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 type Rectangle[T mathex.SignedNumber] struct {

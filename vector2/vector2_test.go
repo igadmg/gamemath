@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/igadmg/gamemath/test"
-	"github.com/igadmg/gamemath/vector2"
+	"github.com/Mishka-Squat/gamemath/test"
+	"github.com/Mishka-Squat/gamemath/vector2"
 	"github.com/stretchr/testify/assert"
 )
 

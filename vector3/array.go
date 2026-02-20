@@ -3,7 +3,7 @@ package vector3
 import (
 	"math"
 
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 type Array[T mathex.SignedNumber] []Vector[T]

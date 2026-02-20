@@ -3,7 +3,7 @@ package rect2
 import (
 	"iter"
 
-	"github.com/igadmg/gamemath/vector2"
+	"github.com/Mishka-Squat/gamemath/vector2"
 )
 
 func (r Rectangle[T]) EachUnitCell() iter.Seq[vector2.Vector[T]] {

@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"testing"
 
-	"github.com/igadmg/gamemath/vector4"
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/gamemath/vector4"
+	"github.com/Mishka-Squat/goex/mathex"
 	"github.com/stretchr/testify/assert"
 )
 

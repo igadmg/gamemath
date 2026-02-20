@@ -7,9 +7,9 @@ import (
 	"image/color"
 	"math"
 
-	"github.com/igadmg/gamemath/vector2"
-	"github.com/igadmg/gamemath/vector3"
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/gamemath/vector2"
+	"github.com/Mishka-Squat/gamemath/vector3"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 // Vector contains 4 components

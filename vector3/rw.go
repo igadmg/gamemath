@@ -6,7 +6,7 @@ import (
 	"io"
 	"math"
 
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 const componentCount = 3

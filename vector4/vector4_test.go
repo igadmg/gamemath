@@ -6,9 +6,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/igadmg/gamemath/vector2"
-	"github.com/igadmg/gamemath/vector3"
-	"github.com/igadmg/gamemath/vector4"
+	"github.com/Mishka-Squat/gamemath/vector2"
+	"github.com/Mishka-Squat/gamemath/vector3"
+	"github.com/Mishka-Squat/gamemath/vector4"
 	"github.com/stretchr/testify/assert"
 )
 

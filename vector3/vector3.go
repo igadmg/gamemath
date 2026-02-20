@@ -8,8 +8,8 @@ import (
 	"math"
 	"math/rand"
 
-	"github.com/igadmg/gamemath/vector2"
-	"github.com/igadmg/goex/mathex"
+	"github.com/Mishka-Squat/gamemath/vector2"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 // Vector contains 3 components

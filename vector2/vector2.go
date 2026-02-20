@@ -7,8 +7,8 @@ import (
 	"math"
 	"math/rand"
 
-	. "github.com/igadmg/gamemath"
-	"github.com/igadmg/goex/mathex"
+	. "github.com/Mishka-Squat/gamemath"
+	"github.com/Mishka-Squat/goex/mathex"
 )
 
 type Vector[T mathex.SignedNumber] struct {

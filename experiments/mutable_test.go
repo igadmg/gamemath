@@ -1,6 +1,6 @@
 package experiments_test
 
-import "github.com/igadmg/goex/mathex"
+import "github.com/Mishka-Squat/goex/mathex"
 
 type MVector[T mathex.Number] struct {
 	X T
