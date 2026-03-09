@@ -11,7 +11,7 @@ import (
 
 const componentCount = 4
 
-func (v Vector[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
+func (v Of[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
 	switch v := any(v).(type) {
 	case Float64:
 		bytes := make([]byte, 8*componentCount)
@@ -71,40 +71,40 @@ func (v Vector[T]) Write(out io.Writer, endian binary.ByteOrder) (err error) {
 	panic(fmt.Errorf("write unimplemented type: %#v", v))
 }
 
-func Read[T mathex.SignedNumber](in io.Reader, endian binary.ByteOrder) (v Vector[T], err error) {
+func Read[T mathex.SignedNumber](in io.Reader, endian binary.ByteOrder) (v Of[T], err error) {
 	switch any(v).(type) {
 	case Float64:
 		v, err := ReadFloat64(in, endian)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 
 	case Float32:
 		v, err := ReadFloat32(in, endian)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 
 	case Int8:
 		v, err := ReadInt8(in)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 
 	case Int16:
 		v, err := ReadInt16(in, endian)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 
 	case Int32:
 		v, err := ReadInt32(in, endian)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 
 	case Int64:
 		v, err := ReadInt64(in, endian)
-		return any(v).(Vector[T]), err
+		return any(v).(Of[T]), err
 	}
 
 	panic(fmt.Errorf("read unimplemented type: %#v", v))
 }
 
-func ReadFloat64(in io.Reader, endian binary.ByteOrder) (Vector[float64], error) {
+func ReadFloat64(in io.Reader, endian binary.ByteOrder) (Of[float64], error) {
 	buf := make([]byte, componentCount*8)
 	_, err := io.ReadFull(in, buf)
-	return Vector[float64]{
+	return Of[float64]{
 		X: math.Float64frombits(endian.Uint64(buf)),
 		Y: math.Float64frombits(endian.Uint64(buf[8:])),
 		Z: math.Float64frombits(endian.Uint64(buf[16:])),
@@ -112,10 +112,10 @@ func ReadFloat64(in io.Reader, endian binary.ByteOrder) (Vector[float64], error)
 	}, err
 }
 
-func ReadFloat32(in io.Reader, endian binary.ByteOrder) (Vector[float32], error) {
+func ReadFloat32(in io.Reader, endian binary.ByteOrder) (Of[float32], error) {
 	buf := make([]byte, componentCount*4)
 	_, err := io.ReadFull(in, buf)
-	return Vector[float32]{
+	return Of[float32]{
 		X: math.Float32frombits(endian.Uint32(buf)),
 		Y: math.Float32frombits(endian.Uint32(buf[4:])),
 		Z: math.Float32frombits(endian.Uint32(buf[8:])),
@@ -123,10 +123,10 @@ func ReadFloat32(in io.Reader, endian binary.ByteOrder) (Vector[float32], error)
 	}, err
 }
 
-func ReadInt8(in io.Reader) (Vector[int8], error) {
+func ReadInt8(in io.Reader) (Of[int8], error) {
 	buf := make([]byte, componentCount)
 	_, err := io.ReadFull(in, buf)
-	return Vector[int8]{
+	return Of[int8]{
 		X: int8(buf[0]),
 		Y: int8(buf[1]),
 		Z: int8(buf[2]),
@@ -134,10 +134,10 @@ func ReadInt8(in io.Reader) (Vector[int8], error) {
 	}, err
 }
 
-func ReadInt16(in io.Reader, endian binary.ByteOrder) (Vector[int16], error) {
+func ReadInt16(in io.Reader, endian binary.ByteOrder) (Of[int16], error) {
 	buf := make([]byte, componentCount*2)
 	_, err := io.ReadFull(in, buf)
-	return Vector[int16]{
+	return Of[int16]{
 		X: int16(endian.Uint16(buf)),
 		Y: int16(endian.Uint16(buf[2:])),
 		Z: int16(endian.Uint16(buf[4:])),
@@ -145,10 +145,10 @@ func ReadInt16(in io.Reader, endian binary.ByteOrder) (Vector[int16], error) {
 	}, err
 }
 
-func ReadInt32(in io.Reader, endian binary.ByteOrder) (Vector[int32], error) {
+func ReadInt32(in io.Reader, endian binary.ByteOrder) (Of[int32], error) {
 	buf := make([]byte, componentCount*4)
 	_, err := io.ReadFull(in, buf)
-	return Vector[int32]{
+	return Of[int32]{
 		X: int32(endian.Uint32(buf)),
 		Y: int32(endian.Uint32(buf[4:])),
 		Z: int32(endian.Uint32(buf[8:])),
@@ -156,10 +156,10 @@ func ReadInt32(in io.Reader, endian binary.ByteOrder) (Vector[int32], error) {
 	}, err
 }
 
-func ReadInt64(in io.Reader, endian binary.ByteOrder) (Vector[int64], error) {
+func ReadInt64(in io.Reader, endian binary.ByteOrder) (Of[int64], error) {
 	buf := make([]byte, componentCount*8)
 	_, err := io.ReadFull(in, buf)
-	return Vector[int64]{
+	return Of[int64]{
 		X: int64(endian.Uint64(buf)),
 		Y: int64(endian.Uint64(buf[8:])),
 		Z: int64(endian.Uint64(buf[16:])),

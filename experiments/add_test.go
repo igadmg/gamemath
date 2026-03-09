@@ -7,11 +7,11 @@ import (
 	"github.com/Mishka-Squat/gamemath/vector3"
 )
 
-var addResultFloat64 vector3.Vector[float64]
+var addResultFloat64 vector3.Of[float64]
 var addResultMFloat64 MVector[float64]
 
 func BenchmarkAddVector(b *testing.B) {
-	var r vector3.Vector[float64]
+	var r vector3.Of[float64]
 	va := vector3.New(1., 2., 3.)
 	vb := vector3.New(2., 3., 4.)
 

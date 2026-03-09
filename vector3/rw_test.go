@@ -15,7 +15,7 @@ type testCaseI interface {
 }
 
 type readWriteTestCase[T mathex.SignedNumber] struct {
-	val vector3.Vector[T]
+	val vector3.Of[T]
 }
 
 func (tc readWriteTestCase[T]) test(t *testing.T) {

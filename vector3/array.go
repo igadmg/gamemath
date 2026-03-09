@@ -6,7 +6,7 @@ import (
 	"github.com/Mishka-Squat/goex/mathex"
 )
 
-type Array[T mathex.SignedNumber] []Vector[T]
+type Array[T mathex.SignedNumber] []Of[T]
 
 type (
 	Float64Array = Array[float64]
@@ -15,11 +15,11 @@ type (
 	Int64Array   = Array[int64]
 )
 
-func (v3a Array[T]) Add(other Vector[T]) (out Array[T]) {
+func (v3a Array[T]) Add(other Of[T]) (out Array[T]) {
 	out = make(Array[T], len(v3a))
 
 	for i, v := range v3a {
-		out[i] = Vector[T]{
+		out[i] = Of[T]{
 			v.X + other.X,
 			v.Y + other.Y,
 			v.Z + other.Z,
@@ -29,9 +29,9 @@ func (v3a Array[T]) Add(other Vector[T]) (out Array[T]) {
 	return
 }
 
-func (v3a Array[T]) AddInplace(other Vector[T]) Array[T] {
+func (v3a Array[T]) AddInplace(other Of[T]) Array[T] {
 	for i, v := range v3a {
-		v3a[i] = Vector[T]{
+		v3a[i] = Of[T]{
 			v.X + other.X,
 			v.Y + other.Y,
 			v.Z + other.Z,
@@ -40,11 +40,11 @@ func (v3a Array[T]) AddInplace(other Vector[T]) Array[T] {
 	return v3a
 }
 
-func (v3a Array[T]) Sub(other Vector[T]) (out Array[T]) {
+func (v3a Array[T]) Sub(other Of[T]) (out Array[T]) {
 	out = make(Array[T], len(v3a))
 
 	for i, v := range v3a {
-		out[i] = Vector[T]{
+		out[i] = Of[T]{
 			v.X - other.X,
 			v.Y - other.Y,
 			v.Z - other.Z,
@@ -54,9 +54,9 @@ func (v3a Array[T]) Sub(other Vector[T]) (out Array[T]) {
 	return
 }
 
-func (v3a Array[T]) SubInplace(other Vector[T]) Array[T] {
+func (v3a Array[T]) SubInplace(other Of[T]) Array[T] {
 	for i, v := range v3a {
-		v3a[i] = Vector[T]{
+		v3a[i] = Of[T]{
 			v.X - other.X,
 			v.Y - other.Y,
 			v.Z - other.Z,
@@ -79,7 +79,7 @@ func (v3a Array[T]) Scale(t float64) (out Array[T]) {
 	out = make(Array[T], len(v3a))
 
 	for i, v := range v3a {
-		out[i] = Vector[T]{
+		out[i] = Of[T]{
 			X: T(float64(v.X) * t),
 			Y: T(float64(v.Y) * t),
 			Z: T(float64(v.Z) * t),
@@ -91,7 +91,7 @@ func (v3a Array[T]) Scale(t float64) (out Array[T]) {
 
 func (v3a Array[T]) ScaleInplace(t float64) Array[T] {
 	for i, v := range v3a {
-		v3a[i] = Vector[T]{
+		v3a[i] = Of[T]{
 			X: T(float64(v.X) * t),
 			Y: T(float64(v.Y) * t),
 			Z: T(float64(v.Z) * t),
@@ -139,14 +139,14 @@ func (v3a Array[T]) MaxLength() float64 {
 	return max
 }
 
-func (v3a Array[T]) Sum() (sum Vector[T]) {
+func (v3a Array[T]) Sum() (sum Of[T]) {
 	for _, v := range v3a {
 		sum = sum.Add(v)
 	}
 	return
 }
 
-func (v3a Array[T]) Modify(f func(Vector[T]) Vector[T]) (out Array[T]) {
+func (v3a Array[T]) Modify(f func(Of[T]) Of[T]) (out Array[T]) {
 	out = make(Array[T], len(v3a))
 
 	for i, v := range v3a {
@@ -158,7 +158,7 @@ func (v3a Array[T]) Modify(f func(Vector[T]) Vector[T]) (out Array[T]) {
 
 // Average sums all vector3's components together and divides each
 // component by the number of values added
-func (v3a Array[T]) Average(vectors []Vector[T]) Vector[float64] {
+func (v3a Array[T]) Average(vectors []Of[T]) Of[float64] {
 	xTotal := 0.
 	yTotal := 0.
 	zTotal := 0.
@@ -173,7 +173,7 @@ func (v3a Array[T]) Average(vectors []Vector[T]) Vector[float64] {
 }
 
 // Bounds returns the min and max points of an AABB encompassing
-func (v3a Array[T]) Bounds() (Vector[T], Vector[T]) {
+func (v3a Array[T]) Bounds() (Of[T], Of[T]) {
 	vmin := New(math.Inf(1), math.Inf(1), math.Inf(1))
 	vmax := New(math.Inf(-1), math.Inf(-1), math.Inf(-1))
 
@@ -196,7 +196,7 @@ func (v3a Array[T]) Bounds() (Vector[T], Vector[T]) {
 
 // StandardDeviation calculates the population standard deviation on each
 // component of the vector
-func (v3a Array[T]) StandardDeviation() (mean, deviation Vector[float64]) {
+func (v3a Array[T]) StandardDeviation() (mean, deviation Of[float64]) {
 	mean = v3a.Average(v3a)
 
 	xTotal, yTotal, zTotal := 0., 0., 0.

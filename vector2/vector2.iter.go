@@ -2,8 +2,8 @@ package vector2
 
 import "iter"
 
-func (v Vector[T]) EnumRegion(w, h T, step ...T) iter.Seq[Vector[T]] {
-	return func(yield func(Vector[T]) bool) {
+func (v Of[T]) EnumRegion(w, h T, step ...T) iter.Seq[Of[T]] {
+	return func(yield func(Of[T]) bool) {
 		sx := T(1)
 		sy := T(1)
 		if len(step) > 0 {
@@ -15,7 +15,7 @@ func (v Vector[T]) EnumRegion(w, h T, step ...T) iter.Seq[Vector[T]] {
 
 		for y := v.Y; y <= v.Y+h; y += sy {
 			for x := v.X; x <= v.X+w; x += sx {
-				if !yield(Vector[T]{X: x, Y: y}) {
+				if !yield(Of[T]{X: x, Y: y}) {
 					return
 				}
 			}
@@ -25,8 +25,8 @@ func (v Vector[T]) EnumRegion(w, h T, step ...T) iter.Seq[Vector[T]] {
 
 // Enumerate coordinates around vector position
 // rw and rh are width and height radiuses of enumerated region
-func (v Vector[T]) EnumRegionAround(wr, hr T, step ...T) iter.Seq[Vector[T]] {
-	return func(yield func(Vector[T]) bool) {
+func (v Of[T]) EnumRegionAround(wr, hr T, step ...T) iter.Seq[Of[T]] {
+	return func(yield func(Of[T]) bool) {
 		sx := T(1)
 		sy := T(1)
 		if len(step) > 0 {
@@ -38,7 +38,7 @@ func (v Vector[T]) EnumRegionAround(wr, hr T, step ...T) iter.Seq[Vector[T]] {
 
 		for y := v.Y - hr; y <= v.Y+hr; y += sy {
 			for x := v.X - wr; x <= v.X+wr; x += sx {
-				if !yield(Vector[T]{X: x, Y: y}) {
+				if !yield(Of[T]{X: x, Y: y}) {
 					return
 				}
 			}
