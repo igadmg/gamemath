@@ -3,7 +3,7 @@ module github.com/Mishka-Squat/gamemath
 go 1.26
 
 require (
-	github.com/Mishka-Squat/goex v0.0.0-20260312232603-01345e9ec059
+	github.com/Mishka-Squat/goex v0.0.0-20260408093508-20944c6d514d
 	github.com/stretchr/testify v1.11.1
 )
 
